@@ -2,9 +2,9 @@ const fs = require('fs');
 const handleError = require('./handle-error');
 
 const VALID_COMMANDS = {
-  CLEAR: 'CLEAR', 
-  FLAG: 'FLAG', 
-  UNFLAG: 'UNFLAG', 
+  CLEAR: 'CLEAR',
+  FLAG: 'FLAG',
+  UNFLAG: 'UNFLAG',
   END: 'END'
 };
 const NUM_ROWS = 8;
@@ -16,7 +16,7 @@ const { commands } = JSON.parse(commandsFile)
 commands.forEach(command => {
   const [action, cellId] = command.toUpperCase().split(/\s+/g);
   if (!Object.values(VALID_COMMANDS).includes(action)) {
-    handleError(`Invalid command "${command}"`);
+    handleError(`Invalid command "${ command }"`);
     return;
   }
 
@@ -33,7 +33,7 @@ commands.forEach(command => {
     posY < 0 ||
     posY >= NUM_ROWS
   ) {
-    handleError(`${command}: Field ${cellId} does not exist.`);
+    handleError(`${ command }: Field ${ cellId } does not exist.`);
     return;
   }
 })
